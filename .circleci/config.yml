@@ -16,8 +16,9 @@ jobs:
           command: |
             set -e
             export GO111MODULE=on
+            go get -u golang.org/x/lint/golint
             go mod download
-            golint
+            golint -set_exit_status
             go test
             go test ./pkg/sd
       - run:
